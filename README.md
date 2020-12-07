@@ -10,7 +10,7 @@ AHV tungstengfabric vRouter integration (Work in progress)
 Install AHV (and CVM) from Nutanix CE ISO file (Nutanix CE 5.18)
 - https://dreadysblog.com/2017/06/29/building-a-hci-lab-with-nutanix-community-edition/
 
-iso file can be downloaded from this site:
+iso file can be downloaded from this site (account is needed):
 - https://next.nutanix.com/discussion-forum-14/download-community-edition-38417
 
 ### AHV OVS setting
@@ -21,7 +21,7 @@ create OVS bridge, from CVM node:
 allssh manage_ovs --bridge_name bro001 create_single_bridge
   ```
 
-bro001 is created for the similar usecase with CVM vm_dvs
+bro001 is created for the similar usecase with TVM vm_dvs
 - https://next.nutanix.com/community-blog-154/deploying-contrail-sdn-controller-in-a-nutanix-cluster-38011
 
 ### Create vRouterVM
@@ -37,7 +37,7 @@ Install CentOS 7
 
 Assign eth0 IP address, and let eth1 unmodified
 
-[install contrail module]
+### Install tungstenfabric module
 
 
   ```
@@ -221,7 +221,7 @@ default via x.x.x.1 dev vhost0
 x.x.x.0/24 dev vhost0 proto kernel scope link src x.x.x.x
 
 
-- IftReq is ok
+- ItfReq is ok
 # ./ist.py vr intf
 +-------+--------------------------------------+--------+-------------------+----------------+---------------+---------+--------------------------------------+
 | index | name                                 | active | mac_addr          | ip_addr        | mdata_ip_addr | vm_name | vn_name                             |
