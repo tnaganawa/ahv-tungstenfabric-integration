@@ -31,23 +31,23 @@ Install CentOS 7
  vNIC:
   1. bridge: br0, vlan-id 0 (it can be created from webui)
   2. bridge: bro001, vlan-id 0 (this needs to be created by acli command)
-  ```
-  acli vm.nic_create contrail-controller1 vlan_mode=kTrunked network=__overlay-vm1
-  ```
+```
+acli vm.nic_create contrail-controller1 vlan_mode=kTrunked network=__overlay-vm1
+```
 
 Assign eth0 IP address, and let eth1 unmodified
 
 ### Install tungstenfabric module
 
 
-  ```
+```
 ansible-playbook -e orchestrator=vcenter -i inventory/ playbooks/configure_instances.yml
 ansible-playbook -e orchestrator=vcenter -i inventory/ playbooks/install_contrail.yml
-  ```
+```
 
  - ESXi / vCenter parameters are needed to complete installation
 
-  ```
+```
 # cat config/instances.yaml
 provider_config:
   bms:
@@ -87,7 +87,7 @@ contrail_configuration:
   VCENTER_AUTH_PROTOCOL: https ### not used
 global_configuration:
   CONTAINER_REGISTRY: tungstenfabric
-  ```
+```
 
 
 ### patch TVM container
