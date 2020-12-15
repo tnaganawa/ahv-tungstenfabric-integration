@@ -96,13 +96,13 @@ https://github.com/tungstenfabric/tf-vcenter-manager
  - idea is to replace vCenter API to Prism Rest API
 
 - virtual-network needs to be manually created both in Prism and tungstenfabric config-database,
-with the same name and the same uuid
+with the same name and the same uuid (project also needs to be default-domain:vCenter)
 
 ```
 acli net.create vn11 vlan=11 vswitch_name=bro001 ## vlan-id is optional, since this network is not used directly .. (vnic will be moved to its own network with name 'vmi-xxx')
 acli net.list ## check uuid
 
-ansible -m tungstenfabric.networking.virtual_network localhost -a 'name=vn11 controller_ip=x.x.x.x state=present subnet=10.0.11.0 subnet_prefix=24 uuid=xxxx-xxxx-xxxx-xxxx'
+ansible -m tungstenfabric.networking.virtual_network localhost -a 'name=vn11 controller_ip=x.x.x.x state=present subnet=10.0.11.0 subnet_prefix=24 project=vCenter uuid=xxxx-xxxx-xxxx-xxxx'
 
 - tungstenfabric ansible module
 https://github.com/tnaganawa/ansible-collections-tungstenfabric
